@@ -14,11 +14,65 @@ Route::get('/', function () {
     return view('welcome');
 });
 */
+//Rutas de la pagina home
 Route::get('/', [
     'as' => 'home',
     'uses' => 'HomeController@index'
 ]);
+Route::get('/AcercaDe', [
+    'as' => 'empresa',
+    'uses' => 'HomeController@acercaDe'
+]);
+Route::get('/Bodegas', [
+    'as' => 'hbodegas',
+    'uses' => 'HomeController@bodegas'
+]);
+Route::get('/Blog', [
+    'as' => 'blog',
+    'uses' => 'HomeController@blog'
+]);
+Route::get('/Contacto', [
+    'as' => 'contacto',
+    'uses' => 'HomeController@contacto'
+]);
 
+//Rutas de productos por especie
+Route::get('/Producto/Tomate', [
+    'as' => 'tomate',
+    'uses' => 'ProductController@tomate'
+]);
+Route::get('/Producto/Pepino', [
+    'as' => 'pepino',
+    'uses' => 'ProductController@pepino'
+]);
+Route::get('/Producto/Chile', [
+    'as' => 'chile',
+    'uses' => 'ProductController@chile'
+]);
+Route::get('/Producto/Melon', [
+    'as' => 'melon',
+    'uses' => 'ProductController@melon'
+]);
+Route::get('/Producto/Sandia', [
+    'as' => 'sandia',
+    'uses' => 'ProductController@sandia'
+]);
+Route::get('/Producto/Frijol', [
+    'as' => 'frijol',
+    'uses' => 'ProductController@frijol'
+]);
+Route::get('/Producto/Garbanzo', [
+    'as' => 'garbanzo',
+    'uses' => 'ProductController@garbanzo'
+]);
+Route::get('/Producto/Maiz', [
+    'as' => 'maiz',
+    'uses' => 'ProductController@maiz'
+]);
+Route::get('/Producto/Cafe', [
+    'as' => 'cafe',
+    'uses' => 'ProductController@cafe'
+]);
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', ['as' =>'auth/login', 'uses' => 'Auth\AuthController@postLogin']);

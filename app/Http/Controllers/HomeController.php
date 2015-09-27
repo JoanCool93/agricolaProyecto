@@ -12,4 +12,20 @@ class HomeController extends Controller
     {
         return \View::make('home');   
     }
+    public function acercaDe()
+    {
+        return \View::make('empresa');   
+    }
+    public function bodegas()
+    {
+        return \View::make('bodegas');   
+    }
+    public function blog()
+    {
+        return \View::make('blog');   
+    }
+    public function contacto()
+    {
+        return \View::make('contacto');   
+    }
 }

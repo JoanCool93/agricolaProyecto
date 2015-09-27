@@ -40,25 +40,57 @@
 		        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		            <ul class="nav navbar-nav navbar">
 		                <li>
-		                    <a href="Empresa">Empresa</a>
+		                    <a href="AcercaDe">Empresa</a>
 		                </li>
 		                <li class="dropdown">
 		                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Productos<b class="caret"></b></a>
 		                    <ul class="dropdown-menu">
+		                        <li class="dropdown-header">Por Especie</li>
+		                        <li role="separator" class="divider"></li>
 		                        <li>
-		                            <a href="portfolio-1-col.html">1 Column Portfolio</a>
+		                            <a href="/Producto/Tomate">Tomate</a>
 		                        </li>
 		                        <li>
-		                            <a href="portfolio-2-col.html">2 Column Portfolio</a>
+		                            <a href="/Producto/Pepino">Pepino</a>
 		                        </li>
 		                        <li>
-		                            <a href="portfolio-3-col.html">3 Column Portfolio</a>
+		                            <a href="/Producto/Chile">Chile</a>
 		                        </li>
 		                        <li>
-		                            <a href="portfolio-4-col.html">4 Column Portfolio</a>
+		                            <a href="/Producto/Melon">Melon</a>
 		                        </li>
 		                        <li>
-		                            <a href="portfolio-item.html">Single Portfolio Item</a>
+		                            <a href="/Producto/Sandia">Sandia</a>
+		                        </li>
+		                        <li>
+		                            <a href="/Producto/Frijol">Frijol</a>
+		                        </li>
+		                        <li>
+		                            <a href="/Producto/Garbanzo">Garbanzo</a>
+		                        </li>
+		                        <li>
+		                            <a href="/Producto/Maiz">Maiz</a>
+		                        </li>
+		                        <li>
+		                            <a href="/Producto/Cafe">Cafe</a>
+		                        </li>
+		                        <li role="separator" class="divider"></li>
+		                        <li class="dropdown-header">Por Region</li>
+		                        <li role="separator" class="divider"></li>
+		                        <li>
+		                            <a href="/Region/Mexico">México</a>
+		                        </li>
+		                        <li>
+		                            <a href="/Region/EEUU">EEUU</a>
+		                        </li>
+		                        <li>
+		                            <a href="/Region/Centroamerica">Centroamerica</a>
+		                        </li>
+		                        <li>
+		                            <a href="/Region/Suramerica">Suramerica</a>
+		                        </li>
+		                        <li>
+		                            <a href="/Region/MedioOriente">Medio Oriente</a>
 		                        </li>
 		                    </ul>
 		                </li>
@@ -75,26 +107,6 @@
 		                </li>
 		                <li>
 		                    <a href="Contacto">Contacto</a>
-		                </li>
-		                <li class="dropdown">
-		                    <a  href="#" class="dropdown-toggle" data-toggle="dropdown">Other Pages <b class="caret"></b></a>
-		                    <ul class="dropdown-menu">
-		                        <li>
-		                            <a href="full-width.html">Full Width Page</a>
-		                        </li>
-		                        <li>
-		                            <a href="sidebar.html">Sidebar Page</a>
-		                        </li>
-		                        <li>
-		                            <a href="faq.html">FAQ</a>
-		                        </li>
-		                        <li>
-		                            <a href="404.html">404</a>
-		                        </li>
-		                        <li>
-		                            <a href="pricing.html">Pricing Table</a>
-		                        </li>
-		                    </ul>
 		                </li>
 		            </ul>
 		            <ul class="nav navbar-nav navbar-right">
