@@ -1,5 +1,5 @@
 suites:
     main:
-        namespace: App
-        psr4_prefix: App
+        namespace: AgricolaGrain
+        psr4_prefix: AgricolaGrain
         src_path: app

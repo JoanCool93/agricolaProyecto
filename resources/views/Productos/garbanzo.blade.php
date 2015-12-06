@@ -1,5 +1,1 @@
-@extends('app')
-
-@section('content')
-
-@endsection
+@extends('errors.404')

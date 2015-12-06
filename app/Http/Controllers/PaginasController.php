@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace AgricolaGrain\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use AgricolaGrain\Http\Requests;
+use AgricolaGrain\Http\Controllers\Controller;
 
 class PaginasController extends Controller
 {

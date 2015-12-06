@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'America/Mazatlan',
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------
@@ -110,8 +110,7 @@ return [
 
     'providers' => [
 
-        Collective\Html\HtmlServiceProvider::class,
-        /*
+        Collective\Html\HtmlServiceProvider::class,        /*
          * Laravel Framework Service Providers...
          */
         Illuminate\Foundation\Providers\ArtisanServiceProvider::class,
@@ -141,10 +140,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        AgricolaGrain\Providers\AppServiceProvider::class,
+        AgricolaGrain\Providers\AuthServiceProvider::class,
+        AgricolaGrain\Providers\EventServiceProvider::class,
+        AgricolaGrain\Providers\RouteServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
     ],
 
@@ -163,6 +163,7 @@ return [
 
         'Form'      => 'Collective\Html\FormFacade',
         'Html'      => 'Collective\Html\HtmlFacade',
+        'PDF'       => Barryvdh\DomPDF\Facade::class,
         'App'       => Illuminate\Support\Facades\App::class,
         'Artisan'   => Illuminate\Support\Facades\Artisan::class,
         'Auth'      => Illuminate\Support\Facades\Auth::class,

@@ -1,6 +1,7 @@
-@extends('app')
+@extends('layouts.principal')
 
 @section('content')
+{{-- @include('alertas.exito') --}}
 <!-- Header Carousel -->
 <header id="myCarousel" class="carousel slide">
     <!-- Indicators -->
@@ -8,11 +9,25 @@
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
         <li data-target="#myCarousel" data-slide-to="1"></li>
         <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+        <li data-target="#myCarousel" data-slide-to="4"></li>
     </ol>
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
         <div class="item active">
+            <div class="fill" style="background-image:url({{ asset('images/carrousel1.jpg') }});"></div>
+            <div class="carousel-caption">
+                <!-- <h2>Cultivo responsable</h2> -->
+            </div>
+        </div>
+        <div class="item">
+            <div class="fill" style="background-image:url({{ asset('images/carrousel2.jpg') }});"></div>
+            <div class="carousel-caption">
+                <!-- <h2>Cultivo responsable</h2> -->
+            </div>
+        </div>
+        <div class="item">
             <div class="fill" style="background-image:url({{ asset('images/slide1.jpg') }});"></div>
             <div class="carousel-caption">
                 <!-- <h2>Tierras fertiles</h2> -->
@@ -52,25 +67,59 @@
                 Bienvenidos a Agricola Grain
             </h1>
         </div>
+        <div class="col-lg-12">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
+        </div>   
+    </div>
+    <!-- /.row -->
+
+    <!-- Features Section -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="page-header">Lo más nuevo</h2>
+        </div>
+        <div class="col-md-6">
+            <p>Café colombiano</p>
+            <ul>
+                <li><strong>Bootstrap v3.2.0</strong>
+                </li>
+                <li>jQuery v1.11.0</li>
+                <li>Font Awesome v4.1.0</li>
+                <li>Working PHP contact form with validation</li>
+                <li>Unstyled page elements for easy customization</li>
+                <li>17 HTML pages</li>
+            </ul>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
+        </div>
+        <div class="col-md-6">
+            <img class="img-responsive" src="{{ asset('images/nuevo.jpg') }}" alt="">
+        </div>
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="page-header">Nuestra empresa</h2>
+        </div>
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4><i class="fa fa-fw fa-question"></i> Quienes Somos</h4>
+                    <h4><i class="fa fa-fw fa-question"></i> Reseña Histórica</h4>
                 </div>
                 <div class="panel-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                    <a href="#" class="btn btn-default">Más</a>
+                    <p>Agrícola Noble Grain S.A. es una sociedad que se constituyó en  marzo de 1992, desde entonces se ha dedicado a la explotación de productos agrícolas, mediante la implementación de siembras, operación de cultivos y la comercialización de sus respectivos productos.
+                    En el transcurso de todos estos años, la Agricola Noble Grain S.A., ha estado gestionada bajo un modelo de evaluaciones de cultivos de frutas tropicales, por ello ha estado en negocios como los lichis o litchis, la macadamia, la guanábana, la mora de castilla, la manzana Ana, los brevos, el mango, los mangostinos, las atemoyas,  la piña, el maracuyá entre otros.</p>
+                    <a href="/nuestraEmpresa" class="btn btn-default">Más</a>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4><i class="fa fa-fw fa-road"></i> Mision</h4>
+                    <h4><i class="fa fa-fw fa-road"></i> Misión</h4>
                 </div>
                 <div class="panel-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                    <a href="#" class="btn btn-default">Learn More</a>
+                    <p>En Agrícola Grain producimos y comercializamos frutas tropicales para atender a los diferentes mercados que demandan fruta en fresco. En el cumplimiento de nuestro objeto, practicamos una agricultura moderna acompañada con gestión gerencial y comercial, aplicación de buenas prácticas agrícolas, sostenibilidad y buscando siempre la rentabilidad de cada operación que permita maximizar el desarrollo y supervivencia de la empresa, sus empleados, proveedores, acreedores y accionistas, mediante la satisfacción de sus Clientes.</p>
+                    <a href="/nuestraEmpresa" class="btn btn-default">Conozcanos</a>
                 </div>
             </div>
         </div>
@@ -80,15 +129,14 @@
                     <h4><i class="fa fa-fw fa-compass"></i> Visión</h4>
                 </div>
                 <div class="panel-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                    <a href="#" class="btn btn-default">Learn More</a>
+                    <p>Agrícola Grain será en el año 2018 una organización orientada en un alto grado a la agro-exportación con productos producidos y certificados en buenas prácticas agrícolas, dirigido bajo un modelo de gestión empresarial que genere un balance social y económico altamente positivo, y accionistas satisfechos por el adecuado nivel de retorno de su inversión.</p>
+                    <a href="/nuestraEmpresa" class="btn btn-default">Conózcanos</a>
                 </div>
             </div>
         </div>
     </div>
-    <!-- /.row -->
 
-    <!-- Portfolio Section -->
+    <!-- Seccion de productos y servicios-->
     <div class="row">
         <div class="col-lg-12">
             <h2 class="page-header">Granos</h2>
@@ -127,30 +175,6 @@
             <a href="portfolio-item.html">
                 <img class="img-responsive img-portfolio img-hover" src="{{ asset('images/bodegas3.jpg') }}" alt="">
             </a>
-        </div>
-    </div>
-    <!-- /.row -->
-
-    <!-- Features Section -->
-    <div class="row">
-        <div class="col-lg-12">
-            <h2 class="page-header">Modern Business Features</h2>
-        </div>
-        <div class="col-md-6">
-            <p>The Modern Business template by Start Bootstrap includes:</p>
-            <ul>
-                <li><strong>Bootstrap v3.2.0</strong>
-                </li>
-                <li>jQuery v1.11.0</li>
-                <li>Font Awesome v4.1.0</li>
-                <li>Working PHP contact form with validation</li>
-                <li>Unstyled page elements for easy customization</li>
-                <li>17 HTML pages</li>
-            </ul>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
-        </div>
-        <div class="col-md-6">
-            <img class="img-responsive" src="http://placehold.it/700x450" alt="">
         </div>
     </div>
     <!-- /.row -->

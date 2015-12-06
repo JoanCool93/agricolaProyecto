@@ -14,14 +14,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 */
+
 //Rutas de la pagina home
 Route::get('/', [
     'as' => 'home',
     'uses' => 'HomeController@index'
 ]);
-Route::get('/AcercaDe', [
+Route::get('/nuestraEmpresa', [
     'as' => 'empresa',
     'uses' => 'HomeController@acercaDe'
+]);
+Route::get('/Productos', [
+    'as' => 'productos',
+    'uses' => 'HomeController@productos'
 ]);
 Route::get('/Bodegas', [
     'as' => 'hbodegas',
@@ -34,6 +39,54 @@ Route::get('/Blog', [
 Route::get('/Contacto', [
     'as' => 'contacto',
     'uses' => 'HomeController@contacto'
+]);
+
+//Rutas de registro de usuario
+Route::resource('usuario', 'UsuarioController');
+
+//Ruta de redireccionamiento al ingresar con algún usuario.
+Route::get('/perfilUsuario', [
+    'as' => 'perfil',
+    'uses' => 'UsuarioController@perfil'
+]);
+
+//Ruta para cargar el formulario de busqueda de usuario.
+Route::get('/agregarUsuario', [
+    'as' => 'agregarUsuario',
+    'uses' => 'UsuarioController@agregar'
+]);
+
+//Rutas para el manejo de las bodegas
+Route::resource('bodega', 'bodegaController');
+
+//Rutas para el manejo de las bodegas
+Route::resource('grano', 'granoController');
+
+//Rutas para el manejo de las bodegas
+Route::resource('especie', 'especieController');
+
+//Rutas para el manejo de las regiones
+Route::resource('region', 'regionController');
+
+//Rutas para la autenticación
+Route::resource('login', 'LogController');
+
+//Ruta para cargar el formulario de autenticacion.
+Route::get('/login', [
+    'as' => 'login',
+    'uses' => 'LogController@login'
+]);
+
+//Rutas de registro de grano
+Route::resource('grano', 'GranoController');
+
+//Rutas de registro de bodega
+Route::resource('bodega', 'BodegaController');
+
+//Ruta para el logout
+Route::get('/logout', [
+    'as' => 'logout',
+    'uses' => 'LogController@logout'
 ]);
 
 //Rutas de productos por especie
@@ -73,11 +126,12 @@ Route::get('/Producto/Cafe', [
     'as' => 'cafe',
     'uses' => 'ProductController@cafe'
 ]);
-// Authentication routes...
-Route::get('auth/login', 'Auth\AuthController@getLogin');
-Route::post('auth/login', ['as' =>'auth/login', 'uses' => 'Auth\AuthController@postLogin']);
-Route::get('auth/logout', ['as' => 'auth/logout', 'uses' => 'Auth\AuthController@getLogout']);
 
-// Registration routes...
-Route::get('auth/register', 'Auth\AuthController@getRegister');
-Route::post('auth/register', ['as' => 'auth/register', 'uses' => 'Auth\AuthController@postRegister']);
+// Rutas de autenticación...
+//Route::get('auth/login', 'Auth\AuthController@getLogin');
+//Route::post('auth/login', ['as' =>'auth/login', 'uses' => 'Auth\AuthController@postLogin']);
+//Route::get('auth/logout', ['as' => 'auth/logout', 'uses' => 'Auth\AuthController@getLogout']);
+
+// Rutas de registro...
+// Route::get('auth/register', 'Auth\AuthController@getRegister');
+// Route::post('auth/register', ['as' => 'auth/register', 'uses' => 'Auth\AuthController@postRegister']);
