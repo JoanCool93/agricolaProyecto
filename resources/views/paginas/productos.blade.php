@@ -1,11 +1,11 @@
 @extends('layouts.principal')
 
 @section('content')
-<div class="panel panel-default">
+<div class="well well-default">
 
     <!-- Tabla para la visualizacion de granos -->
     <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-md-12">
         	<ul class="list-group">
         		<li class="list-group-item">
         			Por especie
@@ -14,18 +14,18 @@
         	<ul class="list-group">
         		@foreach($especies as $especie)
         		<li class="list-group-item">
-        			{!! link_to('productos/', $title = $especie->descripcion, $attributes = "")!!}
+        			{!! link_to($especie->descripcion, $title = $especie->descripcion, $attributes = "")!!}
         		</li>
         		@endforeach
 			</ul>
         </div>
-        <div class="col-lg-8">
+        <div class="col-lg-8 col-md-12">
         	<ul class="list-group">
         		<li class="list-group-item">
         			Por Región
         		</li>
 			</ul>
-        	<div class="col-lg-6">
+        	<div class="col-lg-6 col-md-12">
 	        	<ul class="list-group">
 	        		<li class="list-group-item">
 	        			Nacional
@@ -39,7 +39,7 @@
 	        		@endforeach
 				</ul>
 	        </div>
-	        <div class="col-lg-6">
+	        <div class="col-lg-6 col-md-12 col-sm-8">
 	        	<ul class="list-group">
 	        		<li class="list-group-item">
 	        			Internacional
