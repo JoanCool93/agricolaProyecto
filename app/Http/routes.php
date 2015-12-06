@@ -28,6 +28,10 @@ Route::get('/Productos', [
     'as' => 'productos',
     'uses' => 'HomeController@productos'
 ]);
+Route::get('/Productos/especie', [
+    'as' => 'productos.especie',
+    'uses' => 'HomeController@especie'
+]);
 Route::get('/Bodegas', [
     'as' => 'hbodegas',
     'uses' => 'HomeController@bodegas'

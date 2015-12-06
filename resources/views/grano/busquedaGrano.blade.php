@@ -19,8 +19,7 @@
 	            </div>
 	        </div>
 	        <div class="col-lg-2"  align="center">
-	        	<button type="button" class="btn btn-success btn-lg fa fa-plus"><a href="/grano/create">Agregar</a></button>
-		    </div>
+				{!! link_to('grano/create', $title = 'Agregar grano', $attributes = ['class'=>'btn btn-primary fa fa-plus'])!!}		    </div>
 	    </div>
     </div>
 </div>

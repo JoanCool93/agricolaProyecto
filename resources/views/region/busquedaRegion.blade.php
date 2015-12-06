@@ -19,7 +19,7 @@
 	            </div>
 	        </div>
 	        <div class="col-lg-2"  align="center">
-	        	<button type="button" class="btn btn-success btn-lg fa fa-plus"><a href="/region/create">Agregar</a></button>
+	        	{!! link_to('region/create', $title = 'Agregar región', $attributes = ['class'=>'btn btn-primary fa fa-plus'])!!}
 		    </div>
 	    </div>
     </div>

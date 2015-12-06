@@ -19,7 +19,7 @@
 	            </div>
 	        </div>
 	        <div class="col-lg-2"  align="center">
-	        	<button type="button" class="btn btn-success btn-lg fa fa-plus"><a href="/agregarUsuario">Agregar</a></button>
+	        	{!! link_to('usuario/create', $title = 'Agregar usuario', $attributes = ['class'=>'btn btn-primary fa fa-plus'])!!}
 		    </div>
 	    </div>
     </div>

@@ -39,7 +39,7 @@ class GranoController extends Controller
     {
         $especies = Especie::all();
         $regiones = Region::all();
-        return view('grano.agregarGrano', compact('especies'), compact('regiones'));
+        return view('grano.agregarGrano', compact(['especies', 'regiones']));
     }
 
     /**

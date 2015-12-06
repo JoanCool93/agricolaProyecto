@@ -1,24 +1,59 @@
 @extends('layouts.principal')
 
 @section('content')
-<div class="conteiner">
-	<div class="padding-content">
-		<div align="center">
-    	    <table width="900" height="62" border="0" align="center" cellpadding="12" cellspacing="12" class="box">
-    	    	<tr>
-    	    		<td><h2>Por Especie:</h2></td>
-    	    		<hr>
-    	    		@foreach($especie as $especie)
+<div class="panel panel-default">
 
-    	    		@endforeach
-    	    	</tr>
-    	    	<tr>
-    	    		<td>Por Región</td>
-    	    		@foreach($especie as $especie)
-    	    		@endforeach
-    	    	</tr>
-    	    </table>
-    	</div>
-	</div>
+    <!-- Tabla para la visualizacion de granos -->
+    <div class="row">
+        <div class="col-lg-4">
+        	<ul class="list-group">
+        		<li class="list-group-item">
+        			Por especie
+        		</li>
+        	</ul>
+        	<ul class="list-group">
+        		@foreach($especies as $especie)
+        		<li class="list-group-item">
+        			{!! link_to('productos/', $title = $especie->descripcion, $attributes = "")!!}
+        		</li>
+        		@endforeach
+			</ul>
+        </div>
+        <div class="col-lg-8">
+        	<ul class="list-group">
+        		<li class="list-group-item">
+        			Por Región
+        		</li>
+			</ul>
+        	<div class="col-lg-6">
+	        	<ul class="list-group">
+	        		<li class="list-group-item">
+	        			Nacional
+	        		</li>
+	        		@foreach($regiones as $region)
+	        		@if($region->tipoRegion == 0)
+	        		<li class="list-group-item">
+	        			{!! link_to('productos/', $title = $region->descripcion, $attributes = "")!!}
+	        		</li>
+	        		@endif
+	        		@endforeach
+				</ul>
+	        </div>
+	        <div class="col-lg-6">
+	        	<ul class="list-group">
+	        		<li class="list-group-item">
+	        			Internacional
+	        		</li>
+	        		@foreach($regiones as $region)
+	        		@if($region->tipoRegion == 1)
+	        		<li class="list-group-item">
+	        			{!! link_to('productos/', $title = $region->descripcion, $attributes = "")!!}
+	        		</li>
+	        		@endif
+	        		@endforeach
+				</ul>
+	        </div>
+        </div>
+    </div>
 </div>
 @endsection

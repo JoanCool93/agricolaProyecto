@@ -23,7 +23,7 @@ class HomeController extends Controller
     {
         $especies = Especie::all();
         $regiones = Region::all();
-        return \View::make('paginas.productos', compact('especies'),  compact('regiones'));   
+        return \View::make('paginas.productos', compact(['especies', 'regiones']));
     }
     public function bodegas()
     {
@@ -37,5 +37,9 @@ class HomeController extends Controller
     public function contacto()
     {
         return \View::make('paginas.contacto');   
+    }
+    public function especie()
+    {
+        return \View::make('paginas.especie');   
     }
 }
