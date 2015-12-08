@@ -18,9 +18,8 @@ class Grano extends Model
      *
      * @var array
      */
-    protected $fillable = ['especie', 'variedad', 'descripcion', 'tamañoPlanta', 
-    'tamañoFruto', 'region', 'forma', 'periodoMaduracion', 'resistencias', 
-    'clima'
+    protected $fillable = ['especie', 'variedad', 'descripcion', 'costo', 'tamañoPlanta', 
+    'tamañoFruto', 'region', 'forma', 'periodoMaduracion', 'resistencias', 'clima'
     ];
 
     /**

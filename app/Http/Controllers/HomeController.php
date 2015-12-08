@@ -38,8 +38,4 @@ class HomeController extends Controller
     {
         return \View::make('paginas.contacto');   
     }
-    public function especie()
-    {
-        return \View::make('paginas.especie');   
-    }
 }

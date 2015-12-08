@@ -133,7 +133,7 @@ class UsuarioController extends Controller
         $usuario->save();
 
         Session::flash('message', 'Se actualizó el usuario correctamente');
-        return Redirect::to('/perfilUsuario');
+        return Redirect::to('/Perfil');
     }
 
     /**
@@ -147,7 +147,7 @@ class UsuarioController extends Controller
         Usuario::destroy($id);
 
         Session::flash('message', 'Se eliminó el usuario correctamente');
-        return Redirect::to('/perfilUsuario');
+        return Redirect::to('/Perfil');
     }
 
     public function perfil()

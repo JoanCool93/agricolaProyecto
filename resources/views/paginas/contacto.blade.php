@@ -62,36 +62,30 @@
         <div class="row">
             <div class="col-md-8">
                 <h3>Mandanos un mensaje</h3>
-                <form name="sentMessage" id="contactForm" novalidate>
-                    <div class="control-group form-group">
-                        <div class="controls">
-                            <label>Nombre Completo:</label>
-                            <input type="text" class="form-control" id="name" required data-validation-required-message="Please enter your name.">
-                            <p class="help-block"></p>
-                        </div>
-                    </div>
-                    <div class="control-group form-group">
-                        <div class="controls">
-                            <label>Telefono:</label>
-                            <input type="tel" class="form-control" id="phone" required data-validation-required-message="Please enter your phone number.">
-                        </div>
-                    </div>
-                    <div class="control-group form-group">
-                        <div class="controls">
-                            <label>Correo:</label>
-                            <input type="email" class="form-control" id="email" required data-validation-required-message="Please enter your email address.">
-                        </div>
-                    </div>
-                    <div class="control-group form-group">
-                        <div class="controls">
-                            <label>Mensaje:</label>
-                            <textarea rows="10" cols="100" class="form-control" id="message" required data-validation-required-message="Please enter your message" maxlength="999" style="resize:none"></textarea>
-                        </div>
-                    </div>
-                    <div id="success"></div>
-                    <!-- For success/fail messages -->
-                    <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
-                </form>
+                {!! Form::open(['route' => 'mail.store', 'method' => 'POST']) !!}
+                <div class="form-group">
+                    {!! Form::label ('Nombre completo:') !!}
+                    {!! Form::input('text','nombre', null, ['class'=> 'form-control', 'placeholder' => 'Ingrese su nombre completo']) !!}
+                </div>
+                <div class="form-group">
+                    {!! Form::label ('Teléfono:') !!}
+                    {!! Form::input('text', 'telefono', null, ['class'=> 'form-control', 'placeholder' => 'Ingrese su número telefónico']) !!}
+                </div>
+                <div class="form-group">
+                    {!! Form::label ('Correo electrónico:') !!}
+                    {!! Form::input('text', 'correo', null, ['class'=> 'form-control', 'placeholder' => 'Ingrese su correo electrónico']) !!}
+                </div>
+                <div class="form-group col-md-12">
+                    {!! Form::label ('Mensaje:') !!}
+                </div>
+                <div class="form-group col-md-12">
+                    {!! Form::textarea('mensaje', null, ['class' => 'field', 'placeholder' => 'Ingrese su mensaje']) !!}
+                </div>
+                <div id="success"></div>
+                <!-- For success/fail messages -->
+                {!! Form::submit('Enviar',['class' => 'btn btn-primary fa fa-send']) !!}
+
+                {!! Form::close() !!}
             </div>
 
         </div>

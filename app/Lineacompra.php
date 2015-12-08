@@ -18,12 +18,22 @@ class Lineacompra extends Model
      *
      * @var array
      */
-    protected $fillable = ['nombre', 'apellidoPaterno', 'apellidoMaterno', 'correoElectronico', 'telefono', 'celular', 'contraseña', 'tipoUsuario'];
+    protected $fillable = ['id', 'idCompra', 'idGrano', 'cantidad'];
 
     /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
-    protected $hidden = ['contraseña', 'tipoUsuario', 'remember_token'];
+    protected $hidden = [];
+
+    public function compra()
+    {
+        return $this->belongsTo('App\Compra');
+    }
+
+    public function grano()
+    {
+        return $this->hasOne('App\Grano');
+    }
 }

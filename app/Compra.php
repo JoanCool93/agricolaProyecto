@@ -18,12 +18,22 @@ class Compra extends Model
      *
      * @var array
      */
-    protected $fillable = ['idEmpleado', 'total'];
+    protected $fillable = ['idEmpleado', 'fecha', 'total'];
 
     /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
-    protected $hidden = [];//
+    protected $hidden = [];
+
+    public function usuario()
+    {
+        return $this->belongsTo('App\Usuario');
+    }
+
+    public function lineacompras()
+    {
+        return $this->hasMany('App\Lineacompra');
+    }
 }

@@ -58,11 +58,7 @@
 						{!! link_to_route('usuario.edit', $title = 'Modificar', $parameters = $usuario->id, $attributes = ['class'=>'btn btn-primary fa fa-edit'])!!}
 					</th>
 					<th class="col-lg-1">
-						{!! Form::open(['route' => ['usuario.destroy', $usuario->id], 'method' => 'DELETE']) !!}
-                        <div>
-                            {!! Form::submit('Eliminar',['class' => 'btn btn-danger fa fa-trash-o']) !!}
-                        </div>
-                    	{!! Form::close() !!}
+						@include('usuario.forms.modalEliminar')
 					</th>
 				</tbody>
 				@endforeach

@@ -13,10 +13,18 @@ class CreateComprasTable extends Migration
     public function up()
     {
         Schema::create('compras', function (Blueprint $table) {
-            $table->increments('idCompra')->unsigned();
+            $table->increments('id')->unsigned();
             $table->integer('idEmpleado')->unsigned();
+            $table->date('fecha');
             $table->integer('total');
             $table->timestamps();
+        });
+
+        Schema::table('compras', function($table)
+        {
+            $table->foreign('idEmpleado')
+                ->references('id')->on('usuarios')
+                ->onDelete('cascade');
         });
     }
 

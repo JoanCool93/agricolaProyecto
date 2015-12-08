@@ -33,7 +33,7 @@
 					<th class="col-lg-1">Id:</th>
 					<th class="col-lg-2">Especie:</th>
 					<th class="col-lg-2">Variedad:</th>
-					<th class="col-lg-1">Estado grano:</th>
+					<th class="col-lg-1">Costo:</th>
 					<th class="col-lg-1"></th>
 					<th class="col-lg-1"><span align="center">Acciones</span></th>
 					<th class="col-lg-1"></th>
@@ -41,7 +41,7 @@
 				@foreach($granos as $grano)
 				<tbody>
 					<th class="col-lg-1">{{$grano->id}}</th>
-					<th class="col-lg-2">{{Especie::find($grano->especie)}}</th>
+					<th class="col-lg-2">{{$grano->especie}}</th>
 					<th class="col-lg-2">{{$grano->variedad}}</th>
 					<th class="col-lg-1">{{$grano->costo}}</th>
 					<th class="col-lg-1">
@@ -51,11 +51,7 @@
 						{!! link_to_route('grano.edit', $title = 'Modificar', $parameters = $grano->id, $attributes = ['class'=>'btn btn-primary fa fa-edit'])!!}
 					</th>
 					<th class="col-lg-1">
-						{!! Form::open(['route' => ['grano.destroy', $grano->id], 'method' => 'DELETE']) !!}
-                        <div>
-                            {!! Form::submit('Eliminar',['class' => 'btn btn-danger fa fa-trash-o']) !!}
-                        </div>
-                    	{!! Form::close() !!}
+						@include('grano.forms.modalEliminar')
 					</th>
 				</tbody>
 				@endforeach

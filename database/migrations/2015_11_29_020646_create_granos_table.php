@@ -13,19 +13,19 @@ class CreateGranosTable extends Migration
     public function up()
     {
         Schema::create('granos', function (Blueprint $table) {
+            $table->increments('id')->unsigned;
             $table->integer('especie')->unsigned();
             $table->string('variedad');
             $table->mediumtext('descripcion');
-            $table->double('tamañoPlanta', 4, 3);
-            $table->double('tamañoFruto', 4, 3);
+            $table->string('costo');
+            $table->string('tamañoPlanta');
+            $table->string('tamañoFruto');
             $table->integer('region')->unsigned();
             $table->string('forma');
             $table->integer('periodoMaduracion');
             $table->string('resistencias');
             $table->string('clima');
             $table->timestamps();
-
-            $table->primary(['especie', 'variedad']);
         });
         
         Schema::table('granos', function($table)
@@ -37,7 +37,6 @@ class CreateGranosTable extends Migration
                 ->references('id')->on('regiones')
                 ->onDelete('cascade');
         });
-
     }
 
     /**

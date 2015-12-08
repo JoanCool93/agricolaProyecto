@@ -44,7 +44,7 @@
 					<th class="col-lg-4">{{$region->descripcion}}</th>
 					@if($region->tipoRegion == 0)
                         <th class="col-lg-4">Nacional</th>
-                    @elseif($usuario->tipoUsuario == 1)
+                    @elseif($region->tipoRegion == 1)
                         <th class="col-lg-4">Internacional</th>
                     @endif
 					<th class="col-lg-1">
@@ -54,11 +54,7 @@
 						{!! link_to_route('region.edit', $title = 'Modificar', $parameters = $region->id, $attributes = ['class'=>'btn btn-primary fa fa-edit'])!!}
 					</th>
 					<th class="col-lg-1">
-						{!! Form::open(['route' => ['region.destroy', $region->id], 'method' => 'DELETE']) !!}
-                        <div>
-                            {!! Form::submit('Eliminar',['class' => 'btn btn-danger fa fa-trash-o']) !!}
-                        </div>
-                    	{!! Form::close() !!}
+						@include('region.forms.modalEliminar')
 					</th>
 				</tbody>
 				@endforeach

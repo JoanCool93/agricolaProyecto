@@ -44,13 +44,17 @@
 					<th class="col-lg-1">{{$bodega->id}}</th>
 					<th class="col-lg-2">{{$bodega->nombre}}</th>
 					<th class="col-lg-2">{{$bodega->costoMensual}}</th>
-					@if($bodega->estadoBodega == 0)
-                        <th class="col-lg-1">Disponible</th>
-                    @elseif($bodega->estadobodega == 1)
-                        <th class="col-lg-1">Rentada</th>
-                    @elseif($bodega->estadobodega == 2)
-                        <th class="col-lg-1">Mantenimiento</th>
-                    @endif
+					<th class="col-lg-1">
+						@if($bodega->estadoBodega == 0)
+							Disponible
+	                    @elseif($bodega->estadoBodega == 1)
+	                        Rentada
+	                    @elseif($bodega->estadoBodega == 2)
+	                        Uso interno
+	                    @elseif($bodega->estadoBodega == 3)
+	                        Mantenimiento
+	                    @endif
+                    </th>
 					<th class="col-lg-1">
 						{!! link_to_route('bodega.show', $title = 'Mostrar', $parameters = $bodega->id, $attributes = ['class'=>'btn btn-primary fa fa-list'])!!}
 					</th>
@@ -58,11 +62,7 @@
 						{!! link_to_route('bodega.edit', $title = 'Modificar', $parameters = $bodega->id, $attributes = ['class'=>'btn btn-primary fa fa-edit'])!!}
 					</th>
 					<th class="col-lg-1">
-						{!! Form::open(['route' => ['bodega.destroy', $bodega->id], 'method' => 'DELETE']) !!}
-                        <div>
-                            {!! Form::submit('Eliminar',['class' => 'btn btn-danger fa fa-trash-o']) !!}
-                        </div>
-                    	{!! Form::close() !!}
+						@include('bodega.forms.modalEliminar')
 					</th>
 				</tbody>
 				@endforeach

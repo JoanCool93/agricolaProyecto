@@ -7,47 +7,39 @@
     <div class="row">
         <div class="col-lg-4 col-md-12">
         	<ul class="list-group">
-        		<li class="list-group-item">
-        			Por especie
-        		</li>
+        		<h1 class="page-header">Por especie</h1>
         	</ul>
         	<ul class="list-group">
         		@foreach($especies as $especie)
         		<li class="list-group-item">
-        			{!! link_to($especie->descripcion, $title = $especie->descripcion, $attributes = "")!!}
+        			{!! link_to_route('producto', $title = $especie->descripcion, $parameters = $especie->descripcion, $attributes = "")!!}
         		</li>
         		@endforeach
 			</ul>
         </div>
         <div class="col-lg-8 col-md-12">
         	<ul class="list-group">
-        		<li class="list-group-item">
-        			Por Región
-        		</li>
+        		<h1 class="page-header">Por región</h1>
 			</ul>
         	<div class="col-lg-6 col-md-12">
 	        	<ul class="list-group">
-	        		<li class="list-group-item">
-	        			Nacional
-	        		</li>
+	        		<h3 class="page-header">Nacional</h3>
 	        		@foreach($regiones as $region)
 	        		@if($region->tipoRegion == 0)
 	        		<li class="list-group-item">
-	        			{!! link_to('productos/', $title = $region->descripcion, $attributes = "")!!}
+	        			{!! link_to_route('region', $title = $region->descripcion, $parameters = $region->descripcion, $attributes = "")!!}
 	        		</li>
 	        		@endif
 	        		@endforeach
 				</ul>
 	        </div>
-	        <div class="col-lg-6 col-md-12 col-sm-8">
+	        <div class="col-lg-6 col-md-12">
 	        	<ul class="list-group">
-	        		<li class="list-group-item">
-	        			Internacional
-	        		</li>
+	        		<h3 class="page-header">Internacional</h3>
 	        		@foreach($regiones as $region)
 	        		@if($region->tipoRegion == 1)
 	        		<li class="list-group-item">
-	        			{!! link_to('productos/', $title = $region->descripcion, $attributes = "")!!}
+	        			{!! link_to_route('region', $title = $region->descripcion, $parameters = $region->descripcion, $attributes = "")!!}
 	        		</li>
 	        		@endif
 	        		@endforeach

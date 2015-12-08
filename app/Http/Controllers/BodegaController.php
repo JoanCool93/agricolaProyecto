@@ -56,7 +56,13 @@ class bodegaController extends Controller
             'costoMensual'      => 'required|max:255',
             'costoAnual'        => 'required|max:255',
             'capacidadTotal'    => 'required|max:255',
-            'tipoAcceso'        => 'required|max:255'
+            'tipoAcceso'        => 'required|max:255',
+            'calle'             => 'required|max:255',
+            'numero'            => 'required|max:255',
+            'colonia'           => 'required|max:255',
+            'ciudad'            => 'required|max:255',
+            'estado'            => 'required|max:255',
+            'pais'              => 'required|max:255',
         );
         //  Se crea una instancia de Validator con todos los datos que obtuvo del
         //formulario usando la clase Input y los coteja con el arreglo rules.
@@ -71,19 +77,27 @@ class bodegaController extends Controller
         } else { 
             // Crea una instancia de bodega y se modifican sus atributos con los 
             //datos que se obtuvieron del formulario y se almacena en disco.
-            Bodega::create($request->all());
-            /*$bodega = new Bodega;
-            $bodega->mediumText('descripcion')  = Input::get('descripcion'); //$request->nombre; //
-            $bodega->integer('ancho')           = Input::get('ancho'); //$request->nombre; //
-            $bodega->integer('alto')            = Input::get('alto'); //$request->nombre; //
-            $bodega->integer('profundidad')     = Input::get('profundidad'); //$request->nombre; //
-            $bodega->string('construction')     = Input::get('construccion'); //$request->nombre; //
-            $bodega->integer('costo')           = Input::get('costo'); //$request->nombre; //
-            $bodega->integer('capacidadTotal')  = Input::get('capacidadTotal'); //$request->nombre; //
-            $bodega->integer('capacidadUsada')  = 0;
-            $bodega->integer('estadoBodega')    = Input::get('estadoBodega'); //$request->nombre; //
-            $bodega->integer('tipoAcceso')      = Input::get('tipoAcceso'); //$request->nombre; //
-            $bodega->save();*/
+            //Bodega::create($request->all());
+            $bodega = new Bodega();
+            $bodega->nombre         = Input::get('nombre');
+            $bodega->descripcion    = Input::get('descripcion'); //$request->nombre; //
+            $bodega->ancho          = Input::get('ancho'); //$request->nombre; //
+            $bodega->alto           = Input::get('alto'); //$request->nombre; //
+            $bodega->profundidad    = Input::get('profundidad'); //$request->nombre; //
+            $bodega->construccion   = Input::get('construccion'); //$request->nombre; //
+            $bodega->costoMensual   = Input::get('costoMensual');
+            $bodega->costoAnual     = Input::get('costoAnual'); //$request->nombre; //
+            $bodega->capacidadTotal = Input::get('capacidadTotal'); //$request->nombre; //
+            $bodega->capacidadUsada = 0;
+            $bodega->estadoBodega   = 0;
+            $bodega->tipoAcceso     = Input::get('tipoAcceso');
+            $bodega->calle          = Input::get('calle'); //$request->nombre; //$bodega->string('costoMensual')    = Input::get('costoMensual');
+            $bodega->numero         = Input::get('numero'); //$request->nombre; //
+            $bodega->colonia        = Input::get('colonia'); //$request->nombre; //
+            $bodega->ciudad         = Input::get('ciudad');;
+            $bodega->estado         = Input::get('estado');; //$request->nombre; //
+            $bodega->pais           = Input::get('pais'); //$request->nombre; //
+            $bodega->save();
 
             // Session manda un mensaje de exito.
             Session::flash('message', 'Se ha creado exitosamente la bodega');

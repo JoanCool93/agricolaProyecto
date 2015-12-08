@@ -2,6 +2,9 @@
 
 namespace AgricolaGrain\Http\Controllers;
 
+use AgricolaGrain\Bodega;
+use AgricolaGrain\Grano;
+use View;
 use Illuminate\Http\Request;
 use AgricolaGrain\Http\Requests;
 use AgricolaGrain\Http\Controllers\Controller;
@@ -83,4 +86,10 @@ class CompraController extends Controller
     {
         //
     }
+
+    public function crearCompra()
+    {
+        $granos = Grano::lists('variedad', 'id');
+        return View::make('compra.crearCompra', compact(['granos']));
+    }    
 }

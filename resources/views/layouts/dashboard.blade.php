@@ -38,8 +38,10 @@
             @elseif (Auth::user()->tipoUsuario == 1 )
             <div class="list-group">
                 <a href="#" class="list-group-item header blocked"><h4>Compra-Venta</h4></a>
-                <a href="#" class="list-group-item">Registrar compra de grano</a>
+                <a href="/registroCompra" class="list-group-item">Registrar compra de grano</a>
                 <a href="#" class="list-group-item">Realizar venta de grano</a>
+                <a href="#" class="list-group-item">Ver Inventario</a>
+                <a href="/renta" class="list-group-item">Ver Rentas</a>
             </div>
             <div class="list-group">
                 <a href="#" class="list-group-item"><h4>Operaciones</h4></a>
@@ -48,7 +50,7 @@
                 {{-- <a href="portfolio-item.html" class="list-group-item">Single Portfolio Item</a>
                 <a href="blog-home-1.html" class="list-group-item">Blog Home 1</a> --}}
                 <a href="#" class="list-group-item"><h4>Operaciones</h4></a>
-                <a href="#" class="list-group-item">Renta Bodega</a>
+                <a href="/rentar" class="list-group-item">Renta Bodega</a>
                 <a href="#" class="list-group-item">Bodegas Rentadas</a>
                 <a href="#" class="list-group-item">Compra de Granos</a>
                 <a href="#" class="list-group-item">Seguimiento Pedido</a>

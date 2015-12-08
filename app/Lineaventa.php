@@ -18,12 +18,21 @@ class Lineaventa extends Model
      *
      * @var array
      */
-    protected $fillable = ['nombre', 'apellidoPaterno', 'apellidoMaterno', 'correoElectronico', 'telefono', 'celular', 'contraseña', 'tipoUsuario'];
+    protected $fillable = ['id', 'idVenta', 'idGrano', 'cantidad'];
 
     /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
-    protected $hidden = ['contraseña', 'tipoUsuario', 'remember_token'];
+    protected $hidden = [];
+    public function venta()
+    {
+        return $this->belongsTo('App\Venta');
+    }
+
+    public function grano()
+    {
+        return $this->hasOne('App\Grano');
+    }
 }

@@ -28,12 +28,8 @@ Route::get('/Productos', [
     'as' => 'productos',
     'uses' => 'HomeController@productos'
 ]);
-Route::get('/Productos/especie', [
-    'as' => 'productos.especie',
-    'uses' => 'HomeController@especie'
-]);
 Route::get('/Bodegas', [
-    'as' => 'hbodegas',
+    'as' => 'bodegas',
     'uses' => 'HomeController@bodegas'
 ]);
 Route::get('/Blog', [
@@ -49,7 +45,7 @@ Route::get('/Contacto', [
 Route::resource('usuario', 'UsuarioController');
 
 //Ruta de redireccionamiento al ingresar con algún usuario.
-Route::get('/perfilUsuario', [
+Route::get('/Perfil', [
     'as' => 'perfil',
     'uses' => 'UsuarioController@perfil'
 ]);
@@ -61,10 +57,10 @@ Route::get('/agregarUsuario', [
 ]);
 
 //Rutas para el manejo de las bodegas
-Route::resource('bodega', 'bodegaController');
+Route::resource('bodega', 'BodegaController');
 
 //Rutas para el manejo de las bodegas
-Route::resource('grano', 'granoController');
+Route::resource('grano', 'GranoController');
 
 //Rutas para el manejo de las bodegas
 Route::resource('especie', 'especieController');
@@ -76,66 +72,76 @@ Route::resource('region', 'regionController');
 Route::resource('login', 'LogController');
 
 //Ruta para cargar el formulario de autenticacion.
-Route::get('/login', [
+Route::get('/Login', [
     'as' => 'login',
     'uses' => 'LogController@login'
 ]);
 
-//Rutas de registro de grano
-Route::resource('grano', 'GranoController');
+//Ruta para el login desde bodegas
+Route::post('/Bodegas', [
+    'as' => 'loginBodega',
+    'uses' => 'LogController@store2'
 
-//Rutas de registro de bodega
-Route::resource('bodega', 'BodegaController');
-
-//Ruta para el logout
+]);//Ruta para el logout
 Route::get('/logout', [
     'as' => 'logout',
     'uses' => 'LogController@logout'
 ]);
 
-//Rutas de productos por especie
-Route::get('/Producto/Tomate', [
-    'as' => 'tomate',
-    'uses' => 'ProductController@tomate'
-]);
-Route::get('/Producto/Pepino', [
-    'as' => 'pepino',
-    'uses' => 'ProductController@pepino'
-]);
-Route::get('/Producto/Chile', [
-    'as' => 'chile',
-    'uses' => 'ProductController@chile'
-]);
-Route::get('/Producto/Melon', [
-    'as' => 'melon',
-    'uses' => 'ProductController@melon'
-]);
-Route::get('/Producto/Sandia', [
-    'as' => 'sandia',
-    'uses' => 'ProductController@sandia'
-]);
-Route::get('/Producto/Frijol', [
-    'as' => 'frijol',
-    'uses' => 'ProductController@frijol'
-]);
-Route::get('/Producto/Garbanzo', [
-    'as' => 'garbanzo',
-    'uses' => 'ProductController@garbanzo'
-]);
-Route::get('/Producto/Maiz', [
-    'as' => 'maiz',
-    'uses' => 'ProductController@maiz'
-]);
-Route::get('/Producto/Cafe', [
-    'as' => 'cafe',
-    'uses' => 'ProductController@cafe'
+//Rutas para manejo de visualizacion de los productos
+Route::get('Producto/{especie}', [
+    'as' => 'producto',
+    'uses' => 'ProductoController@especie'
 ]);
 
-// Rutas de autenticación...
-//Route::get('auth/login', 'Auth\AuthController@getLogin');
-//Route::post('auth/login', ['as' =>'auth/login', 'uses' => 'Auth\AuthController@postLogin']);
-//Route::get('auth/logout', ['as' => 'auth/logout', 'uses' => 'Auth\AuthController@getLogout']);
+Route::get('Productos/Region/{region}', [
+    'as' => 'region',
+    'uses' => 'ProductoController@region'
+]);
 
-// Rutas de registro...
-// Route::get('auth/register', 'Auth\AuthController@getRegister');
-// Route::post('auth/register', ['as' => 'auth/register', 'uses' => 'Auth\AuthController@postRegister']);
+Route::get('Producto/{especie}/{variedad}', [
+    'as' => 'productoEspecie',
+    'uses' => 'ProductoController@productoEspecie'
+]);
+
+Route::get('Productos/Region/{region}/{variedad}', [
+    'as' => 'productoRegion',
+    'uses' => 'ProductoController@productoRegion'
+]);
+
+//Rutas para la visualización de PDF con información
+// detallada de productos y servicios
+Route::get('Producto/pdf/{especie}/{variedad}', [
+    'as' => 'productoPdf',
+    'uses' => 'PdfController@producto'
+]);
+
+Route::get('Bodega/pdf/{nombre}', [
+    'as' => 'bodegaPdf',
+    'uses' => 'PdfController@bodega'
+]);
+
+//Rutas para el mail
+Route::resource('mail', 'MailController');
+
+//Rutas de manejo de compras
+Route::get('/registroCompra', [
+    'as' => 'inicioCompra',
+    'uses' => 'CompraController@crearCompra'
+]);
+
+//Rutas de manejo de rentas
+Route::get('/rentar', [
+    'as' => 'inicioRenta',
+    'uses' => 'RentaController@crearRenta'
+]);
+
+Route::post('/rentar', [
+    'as' => 'creacionRenta',
+    'uses' => 'RentaController@store'
+]);
+
+Route::get('/renta', [
+    'as' => 'indexRenta',
+    'uses' => 'RentaController@index'
+]);

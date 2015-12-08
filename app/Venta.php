@@ -18,7 +18,7 @@ class Venta extends Model
      *
      * @var array
      */
-    protected $fillable = ['idCliente', 'total'];
+    protected $fillable = ['idCliente', 'fecha', 'total'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -26,4 +26,13 @@ class Venta extends Model
      * @var array
      */
     protected $hidden = [];
+
+    public function usuario()
+    {
+        return $this->belongsTo('App\Usuario', 'id');
+    }
+    public function lineaventas()
+    {
+        return $this->hasMany('App\Lineaventra');
+    }
 }

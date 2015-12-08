@@ -43,7 +43,7 @@
 		        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		            <ul class="nav navbar-nav navbar">
 		                <li>
-		                    <a href="../nuestraEmpresa">Empresa</a>
+		                    <a href="/nuestraEmpresa">Empresa</a>
 		                </li>
 		                <li>
 		                    <a href="/Productos">Productos</a>
@@ -52,15 +52,15 @@
 		                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Servicios<b class="caret"></b></a>
 		                    <ul class="dropdown-menu">
 		                        <li>
-		                            <a href="../Bodegas">Renta de Bodegas</a>
+		                            <a href="/Bodegas">Renta de Bodegas</a>
 		                        </li>
 		                    </ul>
 		                </li>
 		                <li>
-		                    <a href="../Blog">Blog</a>
+		                    <a href="/Blog">Blog</a>
 		                </li>
 		                <li>
-		                    <a href="../Contacto">Contacto</a>
+		                    <a href="/Contacto">Contacto</a>
 		                </li>
 		            </ul>
 		            <ul class="nav navbar-nav navbar-right">
@@ -76,16 +76,16 @@
 		                        {{-- <li class="dropdown-header"></li> --}}
 		                        {{-- <li role="separator" class="divider"></li> --}}
 		                        <li>
-		                            <a href="/perfilUsuario">Perfil</a>
+		                            <a href="/Perfil" class="fa fa-user"> Perfil</a>
 		                        </li>
 		                        <li>
-		                            <a href="#">Pedidos</a>
+		                            <a href="#"  class="fa fa-envelope"> Pedidos</a>
 		                        </li>
 		                        <li>
-		                            <a href="#">Modificar datos</a>
+		                            <a href="#"  class="fa fa-edit"> Modificar datos</a>
 		                        </li>
 		                        <li>
-		                            <a href="{{route('logout')}}">Cerrar sesión</a>
+		                            <a href="{{route('logout')}}"  class="fa fa-sign-out"> Cerrar sesión</a>
 		                        </li>
 		                    </ul>
 		                </li>
@@ -124,8 +124,8 @@
 	            </div>
 	        </div>
 	    </footer>
-		<!-- Scripts -->
-
+		<!-- Scripts Propios-->
+		{!! Html::script('assets/js/scriptsPropios.js') !!}
 		<!-- jQuery -->
         {!! Html::script('assets/js/jquery.js') !!}
 

@@ -181,7 +181,9 @@ class Arr
     {
         $return = [];
 
-        array_walk_recursive($array, function ($x) use (&$return) { $return[] = $x; });
+        array_walk_recursive($array, function ($x) use (&$return) {
+            $return[] = $x;
+        });
 
         return $return;
     }
@@ -350,6 +352,25 @@ class Arr
     }
 
     /**
+     * Push an item onto the beginning of an array.
+     *
+     * @param  array  $array
+     * @param  mixed  $value
+     * @param  mixed  $key
+     * @return array
+     */
+    public static function prepend($array, $value, $key = null)
+    {
+        if (is_null($key)) {
+            array_unshift($array, $value);
+        } else {
+            $array = [$key => $value] + $array;
+        }
+
+        return $array;
+    }
+
+    /**
      * Get a value from the array, and remove it.
      *
      * @param  array   $array
@@ -424,11 +445,11 @@ class Arr
     {
         foreach ($array as &$value) {
             if (is_array($value)) {
-                $value = self::sortRecursive($value);
+                $value = static::sortRecursive($value);
             }
         }
 
-        if (self::isAssoc($array)) {
+        if (static::isAssoc($array)) {
             ksort($array);
         } else {
             sort($array);

@@ -15,10 +15,22 @@ class CreateRentasTable extends Migration
         Schema::create('rentas', function (Blueprint $table) {
             $table->increments('idRenta')->unsigned();
             $table->integer('idCliente')->unsigned();
+            $table->integer('idBodega')->unsigned();
             $table->date('fechaInicio');
-            $table->date('duracion');
-            $table->integer('costoTotal');
+            $table->date('fechaTermino');
+            $table->integer('duracionMeses');
+            $table->integer('importe');
             $table->timestamps();
+        });
+        
+        Schema::table('rentas', function($table)
+        {
+            $table->foreign('idCliente')
+                ->references('id')->on('usuarios')
+                ->onDelete('cascade');
+            $table->foreign('idBodega')
+                ->references('id')->on('bodegas')
+                ->onDelete('cascade');
         });
     }
 

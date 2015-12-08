@@ -2,6 +2,7 @@
 
 namespace AgricolaGrain;
 
+use AgricolaGrain\Bodega;
 use Illuminate\Database\Eloquent\Model;
 
 class Renta extends Model
@@ -18,7 +19,8 @@ class Renta extends Model
      *
      * @var array
      */
-    protected $fillable = ['idCliente', 'fechaInicio', 'duracion', 'costoTotal'];
+    protected $fillable = ['idCliente', 'idBodega','fechaInicio', 'fechaTermino',
+     'duracionMeses', 'importe'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -26,4 +28,13 @@ class Renta extends Model
      * @var array
      */
     protected $hidden = [];
+    
+    public function usuario()
+    {
+        return $this->belongsTo('AgricolaGrain\Usuario', 'idCliente');
+    }
+    public function bodega()
+    {
+        return $this->belongsTo('AgricolaGrain\Bodega', 'idBodega');
+    }
 }

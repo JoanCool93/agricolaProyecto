@@ -82,9 +82,9 @@
                     @elseif($bodega->estadoBodega == 1)
                         <th class="col-lg-9">Rentada</th>
                     @elseif($bodega->estadoBodega == 2)
-                        <th class="col-lg-9">Mantenimiento</th>
+                        <th class="col-lg-9">Uso interno</th>
                     @elseif($bodega->estadoBodega == 3)
-                        <th class="col-lg-9">En espera</th>
+                        <th class="col-lg-9">Mantenimiento</th>
                     @endif
                 </tr>
                 <tr>

@@ -13,10 +13,18 @@ class CreateVentasTable extends Migration
     public function up()
     {
         Schema::create('ventas', function (Blueprint $table) {
-            $table->increments('idVenta')->unsigned();
+            $table->increments('id')->unsigned();
             $table->integer('idCliente')->unsigned();
+            $table->date('fecha');
             $table->integer('total');
             $table->timestamps();
+        });
+
+        Schema::table('ventas', function($table)
+        {
+            $table->foreign('idCliente')
+                ->references('id')->on('usuarios')
+                ->onDelete('cascade');
         });
     }
 

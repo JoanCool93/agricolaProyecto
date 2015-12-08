@@ -25,9 +25,11 @@ class GranoController extends Controller
     {
         // Obtener todos los granos
         $granos = Grano::paginate(5);
+        $especies = Especie::lists('descripcion', 'id');
+        $regiones = Region::lists('descripcion', 'id');
 
         // Carga la vista a la cual le pasa todos los granos.
-        return \View::make('grano.busquedaGrano', compact('granos'));
+        return \View::make('grano.busquedaGrano', compact(['granos', 'especies', 'regiones']));
     }
 
     /**
@@ -37,8 +39,8 @@ class GranoController extends Controller
      */
     public function create()
     {
-        $especies = Especie::all();
-        $regiones = Region::all();
+        $especies = Especie::lists('descripcion', 'id');
+        $regiones = Region::lists('descripcion', 'id');
         return view('grano.agregarGrano', compact(['especies', 'regiones']));
     }
 
@@ -55,6 +57,7 @@ class GranoController extends Controller
             'especie'           => 'required|max:255',
             'variedad'          => 'required|max:255',
             'descripcion'       => 'required|max:255',
+            'costo'             => 'required|max:255',
             'tamañoPlanta'      => 'required|max:255',
             'tamañoFruto'       => 'required|max:255',
             'region'            => 'required|max:255',
@@ -78,16 +81,16 @@ class GranoController extends Controller
             //datos que se obtuvieron del formulario y se almacena en disco.
             Grano::create($request->all());
             /*$grano = new grano;
-            $grano->mediumText('descripcion')  = Input::get('descripcion'); //$request->nombre; //
-            $grano->integer('ancho')           = Input::get('ancho'); //$request->nombre; //
-            $grano->integer('alto')            = Input::get('alto'); //$request->nombre; //
-            $grano->integer('profundidad')     = Input::get('profundidad'); //$request->nombre; //
-            $grano->string('construction')     = Input::get('construccion'); //$request->nombre; //
-            $grano->integer('costo')           = Input::get('costo'); //$request->nombre; //
-            $grano->integer('capacidadTotal')  = Input::get('capacidadTotal'); //$request->nombre; //
-            $grano->integer('capacidadUsada')  = 0;
-            $grano->integer('estadograno')    = Input::get('estadograno'); //$request->nombre; //
-            $grano->integer('tipoAcceso')      = Input::get('tipoAcceso'); //$request->nombre; //
+            $grano->mediumText('especie')           = Input::get('especie'); //$request->nombre; //
+            $grano->integer('variedad')             = Input::get('variedad'); //$request->nombre; //
+            $grano->integer('descripcion')          = Input::get('descripcion'); //$request->nombre; //
+            $grano->integer('tamañoPlanta')         = Input::get('tamañoPlanta'); //$request->nombre; //
+            $grano->string('tamañoFruto')           = Input::get('tamañoFruto'); //$request->nombre; //
+            $grano->integer('region')               = Input::get('region'); //$request->nombre; //
+            $grano->integer('forma')                = Input::get('forma'); //$request->nombre; //
+            $grano->integer('periodoMaduracion')    = Input::get('periodoMaduracion'); //$request->nombre; //
+            $grano->integer('resistencias')         = Input::get('resistencias'); //$request->nombre; //
+            $grano->integer('clima')                = Input::get('clima'); //$request->nombre; //
             $grano->save();*/
 
             // Session manda un mensaje de exito.
@@ -120,7 +123,9 @@ class GranoController extends Controller
     {
         //Con el grano dado lo busca y se lo pasa a la vista.
         $grano = Grano::find($id);
-        return view('grano.modificargrano', ['grano'=>$grano]);
+        $especies = Especie::lists('descripcion', 'id');
+        $regiones = Region::lists('descripcion', 'id');
+        return view('grano.modificarGrano', compact(['especies', 'regiones', 'grano']));
     }
 
     /**

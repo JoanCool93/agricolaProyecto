@@ -2,6 +2,7 @@
 
 namespace AgricolaGrain;
 
+use AgricolaGrain\Renta;
 use Illuminate\Database\Eloquent\Model;
 
 class Bodega extends Model
@@ -34,5 +35,9 @@ class Bodega extends Model
     public function especies()
     {
         return $this->belongsToMany('App\Especie');
+    }
+    public function rentas()
+    {
+        return $this->hasMany('App\Renta');
     }
 }

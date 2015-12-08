@@ -42,7 +42,7 @@ class LogController extends Controller
     {
 
         if(Auth::attempt(['correoElectronico' => $request['correoElectronico'], 'password' => $request['password']])){
-            return Redirect::to('/perfilUsuario');
+            return Redirect::to('/Perfil');
         }/* elseif(Auth::attempt(['correoElectronico' => $request['correoElectronico'], 'password' => $request['password'], 'tipoUsuario' => 1])){
             return Redirect::to('/perfilUsuario');
         }elseif(Auth::attempt(['correoElectronico' => $request['correoElectronico'], 'password' => $request['password'], 'tipoUsuario' => 2])){
@@ -51,7 +51,17 @@ class LogController extends Controller
             Session::flash('message-fallo', 'Datos incorrectos');
             return Redirect::to('/login');
         }
+    }
+    
+    public function store2(LoginRequest $request)
+    {
 
+        if(Auth::attempt(['correoElectronico' => $request['correoElectronico'], 'password' => $request['password']])){
+            return Redirect::back();
+        } else{
+            Session::flash('message-fallo', 'Datos incorrectos');
+            return Redirect::back();
+        }
     }
 
     /**
