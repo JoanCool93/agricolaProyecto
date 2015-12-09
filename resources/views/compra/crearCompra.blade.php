@@ -36,14 +36,16 @@
 </div>
 <div>
 	{!! Form::open(['route' => 'lineaCompra.store', 'method' => 'POST', 'class' => 'form-horizontal']) !!}
-	    @include('compra.forms.agregarLV')
+	    @include('compra.forms.agregarLC')
 		<div class="col-md-2">
 			{!! Form::input('text', 'idCompra', $compra->id, ['class'=> 'form-control hide', 'placeholder' => 'Ingrese la cantidad de grano comprada']) !!}
 			{!! Form::submit('Agregar grano',['class' => 'btn btn-primary', 'onClick'=>'bPreguntar = false']) !!}
 		</div>
-		{!! Form::close() !!}
+	{!! Form::close() !!}
 		<div class="col-md-2"  align="right">
-			{!! link_to(route('compra.store'), $title = 'Finalizar compra', $attributes = ['class'=>'btn btn-primary', 'onClick'=>'bPreguntar = false'])!!}
+			{!! Form::open(['route' => 'compra.store', 'method' => 'POST', 'class' => 'form-horizontal']) !!}
+				{!! Form::submit('Finalizar compra',['class' => 'btn btn-primary', 'onClick'=>'bPreguntar = false']) !!}
+			{!! Form::close() !!}
 		</div>
 		<div class="col-md-2"  align="right">
 			{!! Form::open(['route' => ['compra.destroy', $compra->id], 'method' => 'DELETE']) !!}

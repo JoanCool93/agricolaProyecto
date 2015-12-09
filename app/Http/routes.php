@@ -124,7 +124,7 @@ Route::get('Bodega/pdf/{nombre}', [
 //Rutas para el mail
 Route::resource('mail', 'MailController');
 
-//Rutas el manego de las compras
+//Rutas el manejo de las compras
 Route::resource('compra', 'CompraController');
 Route::resource('lineaCompra', 'LineaCompraController');
 
@@ -133,9 +133,27 @@ Route::get('/registroCompra', [
     'uses' => 'CompraController@crearCompra'
 ]);
 
-//Rutas el manego de las compras
-Route::resource('compra', 'CompraController');
-Route::resource('lineaCompra', 'LineaCompraController');
+Route::post('/registroCompra', [
+    'as' => 'compra.store2',
+    'uses' => 'CompraController@store2'
+]);
+//Rutas el manejo de las ventas
+Route::resource('venta', 'VentaController');
+Route::resource('lineaVenta', 'LineaVentaController');
+
+Route::get('/registroVenta', [
+    'as' => 'inicioVenta',
+    'uses' => 'VentaController@crearVenta'
+]);
+
+Route::get('/inicioVenta', [
+    'as' => 'iniciarVenta',
+    'uses' => 'VentaController@iniciarVenta'
+]);
+Route::post('/inicioVenta', [
+    'as' => 'venta.create2',
+    'uses' => 'VentaController@create2'
+]);
 
 //Rutas de manejo de rentas
 Route::get('/rentar/{id?}', [

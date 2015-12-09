@@ -2,8 +2,15 @@
 
 namespace AgricolaGrain\Http\Controllers;
 
+use AgricolaGrain\Bodega;
+use AgricolaGrain\Lineaventa;
+use AgricolaGrain\Venta;
+use AgricolaGrain\Grano;
+use Auth;
+use View;
+use Session;
+use Redirect;
 use Illuminate\Http\Request;
-
 use AgricolaGrain\Http\Requests;
 use AgricolaGrain\Http\Controllers\Controller;
 
@@ -37,7 +44,14 @@ class LineaVentaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $idGrano                =$request->grano;
+        $lineaventa            = new Lineaventa();
+        $lineaventa->idVenta  =$request->idVenta;
+        $lineaventa->idGrano   =$idGrano;
+        $lineaventa->cantidad  =$request->cantidad;
+        $lineaventa->subTotal  =$request->cantidad * $lineaventa->grano->costo;
+        $lineaventa->save();
+        return Redirect::back();
     }
 
     /**
@@ -82,6 +96,9 @@ class LineaVentaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Lineaventa::destroy($id);
+
+        Session::flash('message', 'Se ha eliminado de la venta el grano correctamente');
+        return Redirect::back();
     }
 }

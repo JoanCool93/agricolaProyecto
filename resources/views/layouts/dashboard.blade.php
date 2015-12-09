@@ -39,7 +39,7 @@
             <div class="list-group">
                 <a href="#" class="list-group-item header blocked"><h4>Compra-Venta</h4></a>
                 <a href="{{route('compra.create')}}" class="list-group-item">Registrar compra de grano</a>
-                <a href="#" class="list-group-item">Realizar venta de grano</a>
+                <a href="{{route('iniciarVenta')}}" class="list-group-item">Realizar venta de grano</a>
                 <a href="/inventario" class="list-group-item">Ver inventario</a>
                 <a href="/renta" class="list-group-item">Rentas</a>
                 <a href="/compra" class="list-group-item">Compras</a>

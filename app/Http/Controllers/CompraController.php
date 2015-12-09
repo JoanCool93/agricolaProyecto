@@ -43,38 +43,31 @@ class CompraController extends Controller
         $id = Compra::max('id');
         $compra= Compra::find($id);
         $estado = $compra->estadoCompra;
-        if ( $estado != 0) {
-            $compra             = new Compra();
-            $compra->idEmpleado = Auth::user()->id;
-            $compra->fecha      = date('Y-m-d');
-            $compra->estadoCompra     = 0;
+        if ($estado != 0) {
+            $compra                 = new Compra();
+            $compra->idEmpleado     = Auth::user()->id;
+            $compra->fecha          = date('Y-m-d');
+            $compra->estadoCompra   = 0;
             $compra->save();
         }
         return Redirect::to('/registroCompra');
     }
+    public function store(Request $request)
+    {
+        $id = Compra::max('id');
+        $compra = Compra::find($id);
+        $compra->estadoCompra = 1;
+        $compra->save();
 
+        Session::flash('message', 'Se ha finalizado la compra correctamente');
+        return Redirect::to('/Perfil');
+    }
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $id = Compra::max('id');
-        $compra= Compra::find($id);
-        $compra->estadoCompra = 1;
-        $compra->save();
-        Session::flash('message', 'Se ha realizado correctamente la compra');
-    }
-
-    public function eliminarLC($id)
-    {
-        Lineacompra::destroy($id);
-
-        Session::flash('message', 'Se ha el grano de la compra correctamente');
-        return Redirect::back();
-    }
     /**
      * Display the specified resource.
      *
@@ -125,8 +118,8 @@ class CompraController extends Controller
 
     public function crearCompra()
     {
-        $id = Compra::max('id');
-        $compra= Compra::find($id);
+        $id                 = Compra::max('id');
+        $compra            = Compra::find($id);
         $lineasCompra       = Lineacompra::where('idCompra', $compra->id)->get();
         $granos             = Grano::lists('variedad', 'id');
         return View::make('compra.crearCompra', compact(['granos', 'compra', 'lineasCompra']));
