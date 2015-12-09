@@ -16,6 +16,7 @@ class CreateComprasTable extends Migration
             $table->increments('id')->unsigned();
             $table->integer('idEmpleado')->unsigned();
             $table->date('fecha');
+            $table->integer('estadoCompra');
             $table->integer('total');
             $table->timestamps();
         });

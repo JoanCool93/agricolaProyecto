@@ -18,7 +18,7 @@ class Venta extends Model
      *
      * @var array
      */
-    protected $fillable = ['idCliente', 'fecha', 'total'];
+    protected $fillable = ['idCliente', 'fecha', 'estadoVenta', 'total'];
 
     /**
      * The attributes excluded from the model's JSON form.

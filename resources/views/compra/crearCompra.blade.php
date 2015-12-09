@@ -24,7 +24,7 @@
 				<th class="col-lg-1">{{$lineaCompra->cantidad}}</th>
 				<th class="col-lg-1">{{$lineaCompra->subTotal}}</th>
 				<th class="col-lg-2">
-					{!! link_to_route('compra.edit', $title = 'Modificar', $parameters = $lineaCompra->id, $attributes = ['class'=>'btn btn-primary fa fa-edit'])!!}
+					{!! link_to_route('lineaCompra.edit', $title = 'Modificar', $parameters = $lineaCompra->id, $attributes = ['class'=>'btn btn-primary fa fa-edit', 'onClick'=>'bPreguntar = false'])!!}
 				</th>
 				<th class="col-lg-1">
 					@include('compra.forms.modalEliminar')
@@ -35,19 +35,32 @@
     </div>
 </div>
 <div>
-	{!! Form::open(['route' => 'compra.store', 'method' => 'POST', 'class' => 'form-horizontal']) !!}
+	{!! Form::open(['route' => 'lineaCompra.store', 'method' => 'POST', 'class' => 'form-horizontal']) !!}
 	    @include('compra.forms.agregarLV')
 		<div class="col-md-2">
 			{!! Form::input('text', 'idCompra', $compra->id, ['class'=> 'form-control hide', 'placeholder' => 'Ingrese la cantidad de grano comprada']) !!}
-			{!! Form::submit('Agregar grano',['class' => 'btn btn-primary']) !!}
+			{!! Form::submit('Agregar grano',['class' => 'btn btn-primary', 'onClick'=>'bPreguntar = false']) !!}
 		</div>
 		{!! Form::close() !!}
 		<div class="col-md-2"  align="right">
-			{!! link_to_route('finalizarCompra', $title = 'Finalizar compra', $parameters= null, $attributes = ['class'=>'btn btn-primary'])!!}
+			{!! link_to(route('compra.store'), $title = 'Finalizar compra', $attributes = ['class'=>'btn btn-primary', 'onClick'=>'bPreguntar = false'])!!}
 		</div>
 		<div class="col-md-2"  align="right">
-			{!! link_to_route('cancelarCompra', $title = 'Cancelar compra', $parameters= null, $attributes = ['class'=>'btn btn-warning'])!!}
+			{!! Form::open(['route' => ['compra.destroy', $compra->id], 'method' => 'DELETE']) !!}
+	            <div>
+	                {!! Form::submit('Cancelar compra',['class' => 'btn btn-danger', 'onClick'=>'bPreguntar = false']) !!}
+	            </div>
+	    	{!! Form::close() !!}
 		</div>
 	</div>
 </div>
+<script language="JavaScript" type="text/javascript"> 
+    window.onbeforeunload = preguntarAntesDeSalir;
+    var bPreguntar = true;
+    function preguntarAntesDeSalir()
+    {
+      if (bPreguntar)
+        return "Existe una compra en progreso. Si desea salir de la página cancele la compra primero";
+    }
+</script>
 @endsection

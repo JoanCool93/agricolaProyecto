@@ -126,24 +126,16 @@ Route::resource('mail', 'MailController');
 
 //Rutas el manego de las compras
 Route::resource('compra', 'CompraController');
+Route::resource('lineaCompra', 'LineaCompraController');
 
-//Rutas de manejo de compras
 Route::get('/registroCompra', [
     'as' => 'inicioCompra',
     'uses' => 'CompraController@crearCompra'
 ]);
 
-//Rutas de manejo de compras
-Route::post('/registroCompra', [
-    'as' => 'finalizarCompra',
-    'uses' => 'CompraController@finalizarCompra'
-]);
-
-//Rutas de manejo de compras
-Route::post('/lala', [
-    'as' => 'cancelarCompra',
-    'uses' => 'CompraController@cancelarCompra'
-]);
+//Rutas el manego de las compras
+Route::resource('compra', 'CompraController');
+Route::resource('lineaCompra', 'LineaCompraController');
 
 //Rutas de manejo de rentas
 Route::get('/rentar/{id?}', [

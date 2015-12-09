@@ -16,6 +16,7 @@ class CreateVentasTable extends Migration
             $table->increments('id')->unsigned();
             $table->integer('idCliente')->unsigned();
             $table->date('fecha');
+            $table->integer('estadoVenta');
             $table->integer('total');
             $table->timestamps();
         });

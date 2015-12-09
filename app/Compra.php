@@ -18,7 +18,7 @@ class Compra extends Model
      *
      * @var array
      */
-    protected $fillable = ['idEmpleado', 'fecha', 'total'];
+    protected $fillable = ['idEmpleado', 'fecha', 'estadoCompra', 'total'];
 
     /**
      * The attributes excluded from the model's JSON form.

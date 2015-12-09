@@ -3,7 +3,6 @@
 namespace AgricolaGrain\Http\Controllers;
 
 use AgricolaGrain\Bodega;
-use AgricolaGrain\Usuario;
 use AgricolaGrain\Lineacompra;
 use AgricolaGrain\Compra;
 use AgricolaGrain\Grano;
@@ -15,7 +14,7 @@ use Illuminate\Http\Request;
 use AgricolaGrain\Http\Requests;
 use AgricolaGrain\Http\Controllers\Controller;
 
-class CompraController extends Controller
+class LineaCompraController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,13 +23,7 @@ class CompraController extends Controller
      */
     public function index()
     {
-        $usuarios = Usuario::all();
-        $lineaCompras = Lineacompra::all();
-        // Obtener todos los usuarios
-        $compras = Compra::paginate(5);
-
-        // Carga la vista a la cual le pasa todos los usuarios.
-        return \View::make('compra.indexCompra', compact(['compras', 'usuarios', 'lineaCompras']));
+        //
     }
 
     /**
@@ -40,17 +33,7 @@ class CompraController extends Controller
      */
     public function create()
     {
-        $id = Compra::max('id');
-        $compra= Compra::find($id);
-        $estado = $compra->estadoCompra;
-        if ( $estado != 0) {
-            $compra             = new Compra();
-            $compra->idEmpleado = Auth::user()->id;
-            $compra->fecha      = date('Y-m-d');
-            $compra->estadoCompra     = 0;
-            $compra->save();
-        }
-        return Redirect::to('/registroCompra');
+        //
     }
 
     /**
@@ -61,20 +44,16 @@ class CompraController extends Controller
      */
     public function store(Request $request)
     {
-        $id = Compra::max('id');
-        $compra= Compra::find($id);
-        $compra->estadoCompra = 1;
-        $compra->save();
-        Session::flash('message', 'Se ha realizado correctamente la compra');
-    }
-
-    public function eliminarLC($id)
-    {
-        Lineacompra::destroy($id);
-
-        Session::flash('message', 'Se ha el grano de la compra correctamente');
+        $idGrano                =$request->grano;
+        $lineaCompra            = new Lineacompra();
+        $lineaCompra->idCompra  =$request->idCompra;
+        $lineaCompra->idGrano   =$idGrano;
+        $lineaCompra->cantidad  =$request->cantidad;
+        $lineaCompra->subTotal  =$request->cantidad * $lineaCompra->grano->costo;
+        $lineaCompra->save();
         return Redirect::back();
     }
+
     /**
      * Display the specified resource.
      *
@@ -117,18 +96,9 @@ class CompraController extends Controller
      */
     public function destroy($id)
     {
-        Compra::destroy($id);
+        Lineacompra::destroy($id);
 
-        Session::flash('message', 'Se ha cancelado la compra correctamente');
-        return Redirect::to('/Perfil');
+        Session::flash('message', 'Se ha eliminado de la compra el grano correctamente');
+        return Redirect::back();
     }
-
-    public function crearCompra()
-    {
-        $id = Compra::max('id');
-        $compra= Compra::find($id);
-        $lineasCompra       = Lineacompra::where('idCompra', $compra->id)->get();
-        $granos             = Grano::lists('variedad', 'id');
-        return View::make('compra.crearCompra', compact(['granos', 'compra', 'lineasCompra']));
-    }    
 }
