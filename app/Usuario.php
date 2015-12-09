@@ -44,23 +44,23 @@ class Usuario extends Model implements AuthenticatableContract,
 
     }
 
-    public function direccion()
+    public function direcciones()
     {
-        return $this->hasMany('App\Direccion');
+        return $this->hasMany('AgricolaGrain\Direccion');
     }
 
     public function rentas()
     {
-        return $this->hasMany('App\Renta');
+        return $this->hasMany('AgricolaGrain\Renta');
     }
 
     public function ventas()
     {
-        return $this->hasMany('App\Venta');
+        return $this->hasMany('AgricolaGrain\Venta');
     }
 
     public function compras()
     {
-        return $this->hasMany('App\Compra');
+        return $this->hasMany('AgricolaGrain\Compra');
     }
 }

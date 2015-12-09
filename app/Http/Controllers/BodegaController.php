@@ -24,7 +24,7 @@ class bodegaController extends Controller
         $bodegas = Bodega::paginate(5);
 
         // Carga la vista a la cual le pasa todos los bodegas.
-        return \View::make('bodega.busquedaBodega', compact('bodegas'));
+        return \View::make('bodega.indexBodega', compact('bodegas'));
     }
 
     /**

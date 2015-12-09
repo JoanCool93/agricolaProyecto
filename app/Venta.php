@@ -29,10 +29,10 @@ class Venta extends Model
 
     public function usuario()
     {
-        return $this->belongsTo('App\Usuario', 'id');
+        return $this->belongsTo('AgricolaGrain\Usuario', 'idCliente');
     }
     public function lineaventas()
     {
-        return $this->hasMany('App\Lineaventra');
+        return $this->hasMany('AgricolaGrain\Lineaventa');
     }
 }

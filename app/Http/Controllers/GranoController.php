@@ -29,7 +29,7 @@ class GranoController extends Controller
         $regiones = Region::lists('descripcion', 'id');
 
         // Carga la vista a la cual le pasa todos los granos.
-        return \View::make('grano.busquedaGrano', compact(['granos', 'especies', 'regiones']));
+        return \View::make('grano.indexGrano', compact(['granos', 'especies', 'regiones']));
     }
 
     /**

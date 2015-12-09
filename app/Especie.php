@@ -26,13 +26,13 @@ class Especie extends Model
      */
     protected $hidden = [];
 
-    public function grano()
-    {
-        return $this->belongsTo('App\Grano');
-    }
-
     public function bodegas()
     {
-        return $this->belongsToMany('App\Bodega');
+        return $this->belongsToMany('AgricolaGrain\Bodega');
+    }
+
+    public function granos()
+    {
+        return $this->hasMany('AgricolaGrain\Grano');
     }
 }

@@ -18,7 +18,7 @@ class Lineaventa extends Model
      *
      * @var array
      */
-    protected $fillable = ['id', 'idVenta', 'idGrano', 'cantidad'];
+    protected $fillable = ['idVenta', 'idGrano', 'cantidad', 'subTotal'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -26,13 +26,14 @@ class Lineaventa extends Model
      * @var array
      */
     protected $hidden = [];
+
     public function venta()
     {
-        return $this->belongsTo('App\Venta');
+        return $this->belongsTo('AgricolaGrain\Venta', 'idVenta');
     }
 
     public function grano()
     {
-        return $this->hasOne('App\Grano');
+        return $this->belongsTo('AgricolaGrain\Grano', 'idGrano');
     }
 }

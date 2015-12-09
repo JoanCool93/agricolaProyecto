@@ -25,7 +25,7 @@ class RegionController extends Controller
         $regiones = Region::paginate(5);
 
         // Carga la vista a la cual le pasa todos los regions.
-        return \View::make('region.busquedaRegion', compact('regiones'));
+        return \View::make('region.indexRegion', compact('regiones'));
     }
 
     /**

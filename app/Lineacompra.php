@@ -18,7 +18,7 @@ class Lineacompra extends Model
      *
      * @var array
      */
-    protected $fillable = ['id', 'idCompra', 'idGrano', 'cantidad'];
+    protected $fillable = ['idCompra', 'idGrano', 'cantidad', 'subTotal'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -29,11 +29,11 @@ class Lineacompra extends Model
 
     public function compra()
     {
-        return $this->belongsTo('App\Compra');
+        return $this->belongsTo('AgricolaGrain\Compra', 'idCompra');
     }
 
     public function grano()
     {
-        return $this->hasOne('App\Grano');
+        return $this->belongsTo('AgricolaGrain\Grano', 'idGrano');
     }
 }

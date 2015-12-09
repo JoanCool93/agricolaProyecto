@@ -124,18 +124,32 @@ Route::get('Bodega/pdf/{nombre}', [
 //Rutas para el mail
 Route::resource('mail', 'MailController');
 
+//Rutas el manego de las compras
+Route::resource('compra', 'CompraController');
+
 //Rutas de manejo de compras
 Route::get('/registroCompra', [
     'as' => 'inicioCompra',
     'uses' => 'CompraController@crearCompra'
 ]);
 
+//Rutas de manejo de compras
+Route::post('/registroCompra', [
+    'as' => 'finalizarCompra',
+    'uses' => 'CompraController@finalizarCompra'
+]);
+
+//Rutas de manejo de compras
+Route::post('/lala', [
+    'as' => 'cancelarCompra',
+    'uses' => 'CompraController@cancelarCompra'
+]);
+
 //Rutas de manejo de rentas
-Route::get('/rentar', [
+Route::get('/rentar/{id?}', [
     'as' => 'inicioRenta',
     'uses' => 'RentaController@crearRenta'
 ]);
-
 Route::post('/rentar', [
     'as' => 'creacionRenta',
     'uses' => 'RentaController@store'

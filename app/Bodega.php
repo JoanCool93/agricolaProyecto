@@ -34,10 +34,11 @@ class Bodega extends Model
 
     public function especies()
     {
-        return $this->belongsToMany('App\Especie');
+        return $this->belongsToMany('AgricolaGrain\Especie');
     }
+    
     public function rentas()
     {
-        return $this->hasMany('App\Renta');
+        return $this->hasMany('AgricolaGrain\Renta');
     }
 }

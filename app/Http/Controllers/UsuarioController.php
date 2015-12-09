@@ -25,7 +25,7 @@ class UsuarioController extends Controller
         $usuarios = Usuario::paginate(5);
 
         // Carga la vista a la cual le pasa todos los usuarios.
-        return \View::make('usuario.busquedaUsuario', compact('usuarios'));
+        return \View::make('usuario.indexUsuario', compact('usuarios'));
     }
 
     /**

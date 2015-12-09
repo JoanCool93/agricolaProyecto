@@ -30,7 +30,7 @@ class RentaController extends Controller
         $rentas = Renta::paginate(5);
 
         // Carga la vista a la cual le pasa todos los usuarios.
-        return \View::make('renta.busquedaRenta', compact(['rentas', 'usuarios', 'bodegas']));
+        return \View::make('renta.indexRenta', compact(['rentas', 'usuarios', 'bodegas']));
     }
 
     /**
@@ -69,7 +69,8 @@ class RentaController extends Controller
                 ->withErrors($validador)
                 ->withInput(Input::except('password'));
         } else {
-
+            echo $request->idBodega;
+            $bodega = Bodega::find($request->idBodega)->first();
             $fechaInicio = date('Y-m-d');
             $meses = '+'.$request->duracionMeses.' month';
             $fechaTermino = date('Y-m-d',strtotime($meses, strtotime($fechaInicio)));
@@ -79,11 +80,11 @@ class RentaController extends Controller
                 'fechaInicio'   => $fechaInicio,
                 'fechaTermino'  => $fechaTermino,
                 'duracionMeses' => $request->duracionMeses,
-                'importe'       => $request->duracionMeses * 10000
+                'importe'       => $request->duracionMeses * $bodega->costoMensual
             ];
             Renta::create($data);
 
-            // Modificacion del estado de la 
+            // Modificacion del estado de la bodega
             $bodega = Bodega::find($request->idBodega);
             $bodega->estadoBodega = 1;
             $bodega->save();
@@ -93,7 +94,6 @@ class RentaController extends Controller
             return Redirect::to('/rentar');
         }
     }
-
     /**
      * Display the specified resource.
      *
@@ -139,9 +139,11 @@ class RentaController extends Controller
         //
     }
 
-    public function crearRenta()
+    public function crearRenta($id=0)
     {
-        $bodegas = Bodega::lists('nombre', 'id');
-        return View::make('renta.crearRenta', compact(['bodegas']));
+        $sid = $id;
+        $bodegas = Bodega::where('estadoBodega', 0)->get();
+        $bodegas = $bodegas->lists('nombre', 'id');
+        return View::make('renta.crearRenta', compact(['bodegas', 'sid']));
     } 
 }

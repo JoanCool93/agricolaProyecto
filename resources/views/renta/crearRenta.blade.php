@@ -5,7 +5,7 @@
 	{!! Form::open(['route' => 'creacionRenta', 'method' => 'POST']) !!}
         <div class="form-group">
             {!! Form::label('bodega', 'Ingrese bodega a rentar: ') !!}
-            {!! Form::select('idBodega', $bodegas, 0 , ['class'=> 'form-control']) !!}
+            {!! Form::select('idBodega', $bodegas, $sid , ['class'=> 'form-control']) !!}
         </div>
         <div class="form-group">
             {!! Form::label ('¿Por cuantos meses desea rentarla?:') !!}

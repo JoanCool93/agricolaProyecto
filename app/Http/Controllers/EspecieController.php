@@ -25,7 +25,7 @@ class EspecieController extends Controller
         $especies = Especie::paginate(5);
 
         // Carga la vista a la cual le pasa todos los especies.
-        return \View::make('especie.busquedaEspecie', compact('especies'));
+        return \View::make('especie.indexEspecie', compact('especies'));
     }
 
     /**

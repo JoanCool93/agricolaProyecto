@@ -4,6 +4,7 @@ namespace AgricolaGrain\Http\Controllers;
 
 use AgricolaGrain\Bodega;
 use AgricolaGrain\Especie;
+use AgricolaGrain\Grano;
 use AgricolaGrain\Region;
 use Illuminate\Http\Request;
 use AgricolaGrain\Http\Requests;
@@ -23,7 +24,8 @@ class HomeController extends Controller
     {
         $especies = Especie::all();
         $regiones = Region::all();
-        return \View::make('paginas.productos', compact(['especies', 'regiones']));
+        $granos = Grano::paginate(3);
+        return \View::make('paginas.productos', compact(['especies', 'regiones', 'granos']));
     }
     public function bodegas()
     {

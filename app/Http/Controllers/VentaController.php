@@ -2,6 +2,13 @@
 
 namespace AgricolaGrain\Http\Controllers;
 
+use AgricolaGrain\Bodega;
+use AgricolaGrain\Lineaventa;
+use AgricolaGrain\Venta;
+use AgricolaGrain\Grano;
+use View;
+use Redirect;
+use Auth;
 use Illuminate\Http\Request;
 use AgricolaGrain\Http\Requests;
 use AgricolaGrain\Http\Controllers\Controller;
@@ -15,7 +22,13 @@ class VentaController extends Controller
      */
     public function index()
     {
-        //
+        $usuarios = Usuario::all();
+        $lineaVenta = Bodega::all();
+        // Obtener todos los usuarios
+        $ventas = Venta::paginate(5);
+
+        // Carga la vista a la cual le pasa todos los usuarios.
+        return \View::make('renta.indexRenta', compact(['ventas', 'usuarios', 'lineaVenta']));
     }
 
     /**

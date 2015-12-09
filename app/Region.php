@@ -29,6 +29,6 @@ class Region extends Model
 
     public function grano()
     {
-        return $this->belongsTo('App\Grano');
+        return $this->belongsTo('AgricolaGrain\Grano');
     }
 }

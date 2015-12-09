@@ -13,19 +13,23 @@ class ProductoController extends Controller
 {
     public function especie($descripcion)
     {
+        $especies = Especie::all();
+        $regiones = Region::all();
         $especie = Especie::where('descripcion', $descripcion)
         ->first();
         $granos = Grano::where('especie', $especie->id)
         ->get();
-        return \View::make('paginas/especie', compact(['especie', 'granos']));   
+        return \View::make('paginas/especie', compact(['especies', 'regiones','especie', 'granos']));   
     }
 	public function region($descripcion)
     {
+        $especies = Especie::all();
+        $regiones = Region::all();
         $region = Region::where('descripcion', $descripcion)
         ->first();
         $granos = Grano::where('region', $region->id)
         ->get();
-        return \View::make('paginas/region', compact(['granos', 'region']));   
+        return \View::make('paginas/region', compact(['especies', 'regiones', 'granos', 'region']));   
     }
     public function productoEspecie($especie, $variedad)
     {

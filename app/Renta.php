@@ -33,6 +33,7 @@ class Renta extends Model
     {
         return $this->belongsTo('AgricolaGrain\Usuario', 'idCliente');
     }
+    
     public function bodega()
     {
         return $this->belongsTo('AgricolaGrain\Bodega', 'idBodega');

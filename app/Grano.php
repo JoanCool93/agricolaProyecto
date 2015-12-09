@@ -31,11 +31,15 @@ class Grano extends Model
 
     public function especie()
     {
-        return $this->hasOne('App\Especie');
+        return $this->belongsTo('AgricolaGrain\Especie', 'especie');
     }
 
     public function region()
     {
-        return $this->hasOne('App\Region');
+        return $this->belongsTo('AgricolaGrain\Region', 'region');
+    }
+    public function lineacompras()
+    {
+        return $this->hasMany('AgricolaGrain\Region');
     }
 }

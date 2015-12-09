@@ -39,10 +39,10 @@
                     <h3>Dirección:</h3>
                     <p><h4>{!!$bodega->calle!!}, {!!$bodega->numero!!}, {!!$bodega->colonia!!}, {!!$bodega->ciudad!!}, {!!$bodega->estado!!}, {!!$bodega->pais!!} </h4></p>
                     @if(Auth::guest())
-                        @include('layouts.modalLogin')
+                        @include('layouts.modalLoginBodega')
                         
                     @else
-                        {!! link_to_route('home', $title = ' Rentar', $parameters = [$bodega->nombre], $attributes = ['class'=> 'btn btn-primary fa fa-thumbs-up'])!!}
+                        {!! link_to_route('inicioRenta', $title = ' Rentar', $parameters = [$bodega->id], $attributes = ['class'=> 'btn btn-primary fa fa-thumbs-up'])!!}
                     @endif
                     {!! link_to_route('bodegaPdf', $title = ' Imprimir detalles', $parameters = $bodega->nombre, $attributes = ['class'=>'btn btn-primary fa fa-list'])!!}
                 </div>
